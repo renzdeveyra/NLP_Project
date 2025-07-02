@@ -202,13 +202,22 @@ def main():
         choice = input("Enter your choice: ").strip()
 
         if choice == '1':
-            current_category_df = review_df_all[review_df_all['category_type'] == 'Heavy Edit'].copy()
+            current_category_df = review_df_all[
+                (review_df_all['category_type'] == 'Heavy Edit') &
+                (review_df_all[HUMAN_TAGALOG_COL].isna())
+                ].copy()
             full_df = run_review_session(full_df, current_category_df, current_id_col, "Heavy Edit")
         elif choice == '2':
-            current_category_df = review_df_all[review_df_all['category_type'] == 'Medium Edit'].copy()
+            current_category_df = review_df_all[
+                (review_df_all['category_type'] == 'Medium Edit') &
+                (review_df_all[HUMAN_TAGALOG_COL].isna())
+                ].copy()
             full_df = run_review_session(full_df, current_category_df, current_id_col, "Medium Edit")
         elif choice == '3':
-            current_category_df = review_df_all[review_df_all['category_type'] == 'Light Edit'].copy()
+            current_category_df = review_df_all[
+                (review_df_all['category_type'] == 'Light Edit') &
+                (review_df_all[HUMAN_TAGALOG_COL].isna())
+                ].copy()
             full_df = run_review_session(full_df, current_category_df, current_id_col, "Light Edit")
         elif choice == '0':
             print("\nFinalizing and saving all corrections.")

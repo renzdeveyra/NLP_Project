@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore")  # Suppress transformer warnings
 
 # 1. Load Dataset
-df = pd.read_csv("translated_dataset_tagalog.csv")
+df = pd.read_csv("translated_dataset_tagalog2.csv")
 print(f"Original dataset shape: {df.shape}")
 
 # 2. Initialize Sentence Embedding Model
@@ -46,7 +46,7 @@ threshold = 0.70
 df["needs_review"] = df["similarity"] < threshold
 
 # 6. Save to File
-output_path = "evaluated_translations_with_similarity.csv"
+output_path = "evaluated_translations_with_similarity2.csv"
 df.to_csv(output_path, index=False)
 print(f"✅ Evaluation complete! Saved to: {output_path}")
 print(f"🔎 {df['needs_review'].sum()} rows flagged for review (similarity < {threshold})")
